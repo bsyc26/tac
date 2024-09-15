@@ -23,7 +23,7 @@ public class Solution { // leetcode 51
         int N = board.size();
         // base case
         if (row == N) {
-            solsNQ.add(new ArrayList<>(board)); // deep copy to make values immutable
+            solsNQ.add(new ArrayList<>(board)); // deep copy
             return;
         }
         // backtrack

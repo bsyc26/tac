@@ -1,19 +1,23 @@
 import java.util.List;
 import java.util.LinkedList;
-/** Return all possible perms of nums[] in any order */
-public class Solution { // leetcode 46
+import java.util.Arrays;
+/** Return all possible uniq perms of nums[] (may contain dups) in any order */
+public class Solution { // leetcode 47
     // field
     private List<List<Integer>> perms = new LinkedList<>();
     private List<Integer> track = new LinkedList<>();
     private boolean[] used;
-    // backtrack
-    public List<List<Integer>> permute(int[] nums) { // T: O(N*N!), S: O(N)
+    // backtrack + sort
+    public List<List<Integer>> permuteUnique(int[] nums) { // T: O(N*N!), S: O(N).
         // const
         int N = nums.length;
+        // var
+        int[] arr = Arrays.copyOf(nums, N);
+        Arrays.sort(arr); // sort to make dup near
         // data struct
         used = new boolean[N];
         // backtrack
-        backtrack(nums);
+        backtrack(arr);
         // return
         return perms;
     }
@@ -30,14 +34,17 @@ public class Solution { // leetcode 46
             // jump used
             if (used[i])
                 continue;
+            // jump dup
+            if (i > 0 && arr[i] == arr[i-1] && !used[i-1]) // dup only cnts if former one is used
+                continue;
             // make decision
             track.add(arr[i]);
             used[i] = true;
             // next level
             backtrack(arr);
             // cancel decision
-            track.remove(track.size()-1);
             used[i] = false;
+            track.remove(track.size()-1);
         }
     }
 }
