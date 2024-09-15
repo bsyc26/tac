@@ -2,7 +2,7 @@
 public class Solution { // leetcode 19
     // two-pointers: fast-slow
     public ListNode removeNthFromEnd(ListNode head, int n) { // T: O(N), S: O(1).
-        // variables
+        // var
         ListNode lead = new ListNode(Integer.MIN_VALUE); // dummy head node -> head
         lead.next = head;
         ListNode slow = lead;

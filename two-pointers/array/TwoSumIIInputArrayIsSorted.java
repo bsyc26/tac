@@ -2,10 +2,10 @@
 public class Solution { // leetcode 167
     // two-pointers: left-right
     public int[] twoSum(int[] numbers, int target) { // T: O(N), S: O(1).
-        // constants
+        // const
         int N = numbers.length;
         int TGT = target; // required sum of two elems
-        // variables
+        // var
         int left = 0;
         int right = N-1;
         // two pointers

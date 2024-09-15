@@ -3,7 +3,7 @@
 public class Solution { // leetcode 86
     // two-pointers: parallel
     public ListNode partition(ListNode head, int x) { // T: O(N), S: O(1).
-        // variables
+        // var
         ListNode lead0 = new ListNode(Integer.MIN_VALUE); // dummy head of nodes < x
         ListNode pt0 = lead0;
         ListNode lead1 = new ListNode(Integer.MIN_VALUE); // dummy head of nodes >= x

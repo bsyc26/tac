@@ -2,7 +2,7 @@
 public class Solution { // leetcode 21
     // two-pointers: parallel
     public ListNode mergeTwoLists(ListNode List1, ListNode List2) { // T: O(M+N), S: O(1).
-        // variables
+        // var
         ListNode pt1 = List1;
         ListNode pt2 = List2;
         ListNode lead = new ListNode(Integer.MIN_VALUE); // dummy head node

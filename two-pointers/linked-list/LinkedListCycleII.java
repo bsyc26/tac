@@ -2,10 +2,10 @@
 public class Solution { // leetcode 142
     // two-pointers: fast-slow
     public ListNode detectCycle(ListNode head) { // T: O(N), S: O(1).
-        // variables
+        // var
         ListNode fast = head;
         ListNode slow = head;
-        // two-pointers
+        // two pointers
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;

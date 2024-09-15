@@ -3,9 +3,9 @@
 public class Solution { // leetcode 344
     // two-pointers: left-right
     public void reverseString(char[] s) { // T: O(N), S: O(1).
-        // constants
+        // const
         int N = s.length;
-        // variables
+        // var
         int left = 0;
         int right = N-1;
         // two pointers

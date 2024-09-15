@@ -4,7 +4,7 @@ public class Solution { // leetcode 83
     public ListNode deleteDuplicates(ListNode head) { // T: O(N), S: O(1).
         // edge case
         if (head == null) return null;
-        // variables
+        // var
         ListNode fast = head;
         ListNode slow = head;
         // two pointers

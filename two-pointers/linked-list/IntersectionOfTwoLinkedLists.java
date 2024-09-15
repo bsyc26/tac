@@ -2,7 +2,7 @@
 public class Solution { // leetcode 160
     // two-pointers: parallel
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) { // T: O(M+N), S: O(1).
-        // variables
+        // var
         ListNode ptA = headA;
         ListNode ptB = headB;
         // two pointers

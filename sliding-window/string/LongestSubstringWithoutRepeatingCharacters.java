@@ -5,11 +5,11 @@ public class Solution { // leetcode 3
     public int lengthOfLongestSubstring(String s) { // T: O(N), S: O(N).
         // edge case
         if (s.length() == 0) return 0;
-        // constants
+        // const
         int N = s.length();
-        // data structures
+        // data struct
         HashMap<Character, Integer> mapWin = new HashMap<>();
-        // variables
+        // var
         int left = 0;
         int right = 0;
         int maxLen = 0;

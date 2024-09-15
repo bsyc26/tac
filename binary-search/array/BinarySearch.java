@@ -3,10 +3,10 @@
 public class Solution { // leetcode 704
     // binary-search
     public int search(int[] nums, int target) { // T: O(logN), S: O(1).
-        // constants
+        // const
         int N = nums.length;
         int TGT = target;
-        // variables
+        // var
         int lo = 0;
         int hi = N-1;
         // binary search

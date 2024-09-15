@@ -5,14 +5,14 @@ public class Solution { // leetcode 76
     public String minWindow(String s, String t) { // T: O(M+N), S: O(M+N).
         // edge case
         if (s.length() < t.length()) return "";
-        // constants
+        // const
         int N = s.length();
-        // data structures
+        // data struct
         HashMap<Character, Integer> mapT = new HashMap<>(); // char: occurrence
         for (char c : t.toCharArray())
             mapT.put(c, mapT.getOrDefault(c,0)+1);
         HashMap<Character, Integer> mapWin = new HashMap<>(); // char: occurrence
-        // variables
+        // var
         int left = 0;
         int right = 0;
         int start = 0;

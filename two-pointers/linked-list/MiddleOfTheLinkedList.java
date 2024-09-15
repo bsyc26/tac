@@ -2,7 +2,7 @@
 public class Solution { // leetcode 876
     // two-pointers: fast-slow
     public ListNode middleNode(ListNode head) { // T: O(N), S: O(1).
-        // variables
+        // var
         ListNode fast = head;
         ListNode slow = head;
         // two pointers

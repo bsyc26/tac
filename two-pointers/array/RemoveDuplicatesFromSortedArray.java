@@ -3,11 +3,11 @@
 public class Solution { // leetcode 26
     // two-pointers: fast-slow
     public int removeDuplicates(int[] nums) { // T: O(N), S: O(1).
-        // constants
+        // const
         int N = nums.length;
         // edge case
         if (N == 0) return 0;
-        // variables
+        // var
         int fast = 0;
         int slow = 0;
         // two pointers

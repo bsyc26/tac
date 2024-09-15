@@ -2,9 +2,9 @@
 public class Solution { // leetcode 283
     // two-pointers: fast-slow
     public void moveZeroes(int[] nums) { // T: O(N), S: O(1).
-        // constants
+        // const
         int N = nums.length;
-        // variables
+        // var
         int fast = 0;
         int slow = 0;
         // two pointers

@@ -3,7 +3,7 @@
 public class Solution { // leetcode 27
     // two-pointers: fast-slow
     public int removeElement(int[] nums, int val) { // T: O(N), S: O(1).
-        // constants
+        // const
         int N = nums.length;
         // edge case
         if (N == 0) return 0;
@@ -11,7 +11,7 @@ public class Solution { // leetcode 27
             nums[0] = -1;
             return 0;
         }
-        // variables
+        // var
         int fast = 0;
         int slow = 0;
         // two pointers

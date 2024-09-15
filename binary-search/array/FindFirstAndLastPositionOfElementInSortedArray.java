@@ -5,10 +5,10 @@ public class Solution { // leetcode 34
     public int[] searchRange(int[] nums, int target) { // T: O(logN), S: O(1).
         // edge case
         if (nums.length == 0) return new int[]{ -1, -1 };
-        // constants
+        // const
         int N = nums.length;
         int TGT = target;
-        // variables
+        // var
         int lo = 0;
         int hi = N;
         int[] idxs = new int[2]; // [start, end]

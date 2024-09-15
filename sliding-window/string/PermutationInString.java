@@ -5,14 +5,14 @@ public class Solution { // leetcode 567
     public boolean checkInclusion(String s1, String s2) { // T: O(M+N), S: O(M+N).
         // edge case
         if (s2.length() < s1.length()) return false;
-        // constants
+        // const
         int N = s2.length();
-        // data structures
+        // data struct
         HashMap<Character, Integer> mapS1 = new HashMap<>();
         for (char c : s1.toCharArray())
             mapS1.put(c, mapS1.getOrDefault(c,0)+1);
         HashMap<Character, Integer> mapWin = new HashMap<>();
-        // variables
+        // var
         int left = 0;
         int right = 0;
         int numMatch = 0; // num of char-occurrence pairs matched of window to s1
