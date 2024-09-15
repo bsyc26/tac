@@ -12,9 +12,13 @@ Java solution codes of LeetCode, based on firstly Algorithm and then Data Struct
     - traverse
     - division
 - bfs
-- heap
+- priority-queue
+    - min-heap
+    - state
 - backtrack
     - backtrack + sort
 - dp
     - dp-memo + top2bot + recur
     - dp-table + bot2top + iter
+- math
+    - factor

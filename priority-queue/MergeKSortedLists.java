@@ -2,7 +2,7 @@ import java.util.PriorityQueue;
 /** Merge all lists into sorted one and return its head
   * lists[] is k linked lists sorted in ascending order */
 public class Solution { // leetcode 23
-    // priority-queue
+    // priority-queue: min-heap
     public ListNode mergeKLists(ListNode[] lists) { // T: O(NlogK), S: O(K).
         // const
         int K = lists.length; // k linked-lists to merge
@@ -16,7 +16,7 @@ public class Solution { // leetcode 23
         // var
         ListNode lead = new ListNode(Integer.MIN_VALUE); // dummy head of merged linked list
         ListNode walk = lead;
-        // min heap
+        // priority queue
         while (!pq.isEmpty()) {
             // poll
             ListNode minNode = pq.poll();
