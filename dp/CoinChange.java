@@ -2,7 +2,7 @@ import java.util.Arrays;
 /** Return the min num of coins to make up amount else -1
   * coins[i] is the choice of coin, can use infinite num of each kind */
 public class Solution { // leetcode 322
-    // dp-table + bot2top + iter
+    // dp-table
     public int coinChange(int[] coins, int amount) { // T: O(N), S: O(N).
         // const
         int N = amount; // required sum
@@ -34,7 +34,7 @@ public class Solution { // leetcode 322
     // field
     private int[] memo;
     private int DF; // default value of memo[]
-    // dp-memo + top2bot + recur
+    // dp-memo
     public int coinChange(int[] coins, int amount) { // T: O(N), S: O(N).
         // edge case
         if (amount == 0) return 0;

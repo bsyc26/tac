@@ -1,7 +1,7 @@
 /** Calc F(n) based on Fibonacci sequence
   * F(0) = 0, F(1) = 1, F(n) = F(n-1) + F(n-2) */
 public class Solution { // leetcode 509
-    // dp-table + bot2top
+    // dp-table
     public int fib(int n) { // T: O(N), S: O(N).
         // edge case
         if (n == 0 || n == 1) return n;
@@ -26,7 +26,7 @@ public class Solution { // leetcode 509
 public class Solution { // leetcode 509
     // fields
     private int[] memo;
-    // dp-memo + top2bot + recur
+    // dp-memo
     public int fib(int n) { // T: O(N), S: O(N).
         // const
         int N = n;

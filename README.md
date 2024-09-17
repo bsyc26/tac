@@ -6,8 +6,11 @@ Java solution codes of LeetCode, based on firstly Algorithm and then Data Struct
     - left-right
     - parallel
 - sliding-window
+    - sliding-window + hash-map
 - binary-search
     - left-right-bound
+    - patience-sorting
+    - binary-search + sort
 - dfs
     - traverse
     - division
@@ -18,7 +21,9 @@ Java solution codes of LeetCode, based on firstly Algorithm and then Data Struct
 - backtrack
     - backtrack + sort
 - dp
-    - dp-memo + top2bot + recur
-    - dp-table + bot2top + iter
+    - dp-memo
+    - dp-table
+    - dp-1d
+    - dp-2d
 - math
     - factor

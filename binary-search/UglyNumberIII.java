@@ -6,20 +6,20 @@ public class Solution { // leetcode 1201
         // const
         int N = n;
         // var
-        int left = 1;
-        int right = (int)2e9;
+        int lo = 1;
+        int hi = (int)2e9;
         // binary search
-        while (left <= right) { // [1..2e9]
+        while (lo <= hi) { // [1..2e9]
             // calc mid
-            int mid = left + (right-left)/2;
+            int mid = lo + (hi-lo)/2;
             // step left or right
             if (getFactors(mid, a, b, c) < N)
-                left = mid+1;
+                lo = mid+1;
             else
-                right = mid-1;
+                hi = mid-1;
         }
         // return
-        return left;
+        return lo;
     }
     private long getFactors(int num, int a, int b, int c) { // get num div by a/b/c of [1..num]
         long divA = num / a;
