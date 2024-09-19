@@ -1,6 +1,7 @@
 # The Algorithm Book
 Java solution codes of LeetCode, based on firstly Algorithm and then Data Structure classification.
 
+- one-pointer
 - two-pointers
     - fast-slow
     - left-right
@@ -20,10 +21,10 @@ Java solution codes of LeetCode, based on firstly Algorithm and then Data Struct
     - state
 - backtrack
     - backtrack + sort
+- union-find
 - dp
     - dp-memo
     - dp-table
-    - dp-1d
-    - dp-2d
+        - knapsack
 - math
     - factor
