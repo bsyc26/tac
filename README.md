@@ -1,30 +1,40 @@
-# The Algorithm Book
-Java solution codes of LeetCode, based on firstly Algorithm and then Data Structure classification.
-
-- one-pointer
-- two-pointers
-    - fast-slow
-    - left-right
-    - parallel
-- sliding-window
-    - sliding-window + hash-map
-- binary-search
-    - left-right-bound
-    - patience-sorting
-    - binary-search + sort
-- dfs
-    - traverse
-    - division
-- bfs
-- priority-queue
-    - min-heap
-    - state
-- backtrack
-    - backtrack + sort
-- union-find
-- dp
-    - dp-memo
-    - dp-table
-        - knapsack
-- math
-    - factor
+# The Algorithm Collection
+Java Source Code of Algorithm Based on ![LeetCode](https://leetcode.com/problemset/)
+```
+.
+├── backtracking
+│   ├── matrix
+│   ├── static-array
+│   └── string
+├── binary-search
+│   ├── integer
+│   ├── matrix
+│   └── static-array
+├── breadth-first-search
+│   ├── binary-search
+│   └── string
+├── depth-first-search
+│   └── binary-tree
+├── dynamic-programming-1d
+│   ├── integer
+│   ├── static-array
+│   └── string
+├── dynamic-programming-2d
+│   ├── static-array
+│   └── string
+├── iteration
+│   ├── singly-linked-list
+│   └── static-array
+├── math
+│   └── integer
+├── priority-queue
+│   └── binary-heap
+├── recursion
+│   └── singly-linked-list
+├── sliding-window
+│   └── string
+└── two-pointers
+    ├── singly-linked-list
+    ├── static-array
+    └── string
+```
