@@ -5,8 +5,9 @@ public class Solution { // leetcode 206
         // base case
         if (head == null || head.next == null)
             return head;
-        // sub division
+        // recur
         ListNode last = reverseList(head.next); // head -> (null <- ) head.next <- ... <- last
+        // post-order
         head.next.next = head; // head -> <- head.next <- ... <- last
         head.next = null; // null <- head <- head.next <- .. <- last
         // return

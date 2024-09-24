@@ -10,9 +10,9 @@ public class Solution { // leetcode 92
         ListNode preRev = head;
         for (int i = 0; i < left-2; i++)
             preRev = preRev.next;
-        ListNode leftHead = preRev.next;
+        ListNode revHead = preRev.next;
         // conn rev
-        preRev.next = reverseN(leftHead, N);
+        preRev.next = reverseN(revHead, N);
         // return
         return head;
     }
@@ -26,11 +26,13 @@ public class Solution { // leetcode 92
         int steps = N;
         // iter
         while (steps > 0) {
-            --steps;
+            // exec rev
             cur.next = pred;
             pred = cur;
             cur = succ;
             succ = (succ == null) ? null : succ.next;
+            // step less
+            --steps;
         }
         // conn rev
         head.next = cur; // head is tail of rev, cur is head of unrev
