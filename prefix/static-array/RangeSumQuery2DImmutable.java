@@ -1,6 +1,7 @@
 /** Implement the NumMatrix class
   * NumMatrix(int[][] matrix): inits the obj with matrix[][]
   * int sumRegion(int row1, int col1, int row2, int col2): returns the sum of region */
+// prefix: presum
 public class NumMatrix { // leetcode 304
     // field
     private int[][] preSum;

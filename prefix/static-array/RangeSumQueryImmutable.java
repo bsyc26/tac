@@ -1,6 +1,7 @@
 /** Implement the NumArray class
   * NumArray(int[] nums) inits the obj with nums[]
   * int sumRange(int left, int right) returns the sum of elems of nums[left, right] */
+// prefix: presum
 public class NumArray { // leetcode 303
     // field
     private int[] preSum;
