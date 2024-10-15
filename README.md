@@ -1,40 +1,21 @@
 # The Algorithm Collection
-Java Source Code of Algorithm Based on ![LeetCode](https://leetcode.com/problemset/)
+Java source code of Algorithm based on LeetCode classification.
 ```
 .
+├── array
 ├── backtracking
-│   ├── matrix
-│   ├── static-array
-│   └── string
+├── bfs
 ├── binary-search
-│   ├── integer
-│   ├── matrix
-│   └── static-array
-├── breadth-first-search
-│   ├── binary-search
-│   └── string
-├── depth-first-search
-│   └── binary-tree
-├── dynamic-programming-1d
-│   ├── integer
-│   ├── static-array
-│   └── string
-├── dynamic-programming-2d
-│   ├── static-array
-│   └── string
-├── iteration
-│   ├── singly-linked-list
-│   └── static-array
+├── binary-tree
+├── dp-1d
+├── dp-nd
+├── hash
+├── linked-list
 ├── math
-│   └── integer
+├── matrix
+├── prefix
 ├── priority-queue
-│   └── binary-heap
-├── recursion
-│   └── singly-linked-list
 ├── sliding-window
-│   └── string
+├── string
 └── two-pointers
-    ├── singly-linked-list
-    ├── static-array
-    └── string
 ```
