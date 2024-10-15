@@ -1,45 +1,52 @@
-import java.util.Queue;
-import java.util.LinkedList;
-import java.util.HashSet;
 /** Return the min num of turns to open the lock
   * lock init at "0000", need to be target, each turn can +1/-1 one digit of four
   * if meet deadends lock will freeze and unable to be turn any more */
-public class Solution { // leetcode 752
-    // bfs + hash-set
-    public int openLock(String[] deadends, String target) { // T: O(2N), S: O(N).
+
+// leetcode 752
+// bfs + hash-set
+// T: O(2^N)
+// S: O(N)
+
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.HashSet;
+
+public class Solution {
+    // core method
+    public int openLock(String[] deadends, String target) {
         // const
-        String TGT = target;
-        // data struct
-        HashSet<String> deads = new HashSet<>();
-        for (String dead : deadends)
-            deads.add(dead);
+        target = target;
+        // var
+        HashSet<String> deads = new HashSet<>(); // deadends to hash-set for de-dup
+        for (String dead : deadends) deads.add(dead);
+        // DS
         Queue<String> q = new LinkedList<>();
         q.offer("0000");
         HashSet<String> visited = new HashSet<>();
         visited.add("0000");
-        // var
+        // res
         int step = 0;
         // bfs
         while (!q.isEmpty()) {
-            // cnt level
+            // count level size
             int sz = q.size();
-            // loop level
+            // traverse level elems
             for (int i = 0; i < sz; i++) {
                 // poll
                 String cur = q.poll();
-                // comp states
-                if (deads.contains(cur))
-                    continue;
-                if (cur.equals(TGT))
+                // jump deads
+                if (deads.contains(cur)) continue;
+                // return step if find target
+                if (cur.equals(target))
                     return step;
                 // offer
-                for (int j = 0; j < 4; j++) {
-                    String up = plusOne(cur, j);
+                for (int digit = 0; digit < 4; digit++) {
+                    String up = plusOne(cur, digit);
                     if (!visited.contains(up)) {
                         q.offer(up);
                         visited.add(up);
                     }
-                    String dn = minusOne(cur, j);
+                    String dn = minusOne(cur, digit);
                     if (!visited.contains(dn)) {
                         q.offer(dn);
                         visited.add(dn);
@@ -49,17 +56,19 @@ public class Solution { // leetcode 752
             // step level
             ++step;
         }
-        // return fallback
+        // return fallback -1 if not match target
         return -1;
     }
-    private String plusOne(String str, int idx) {
+
+    // support methods
+    private String plusOne(String str, int idx) { // returns the String plus by one at idx
         char[] chars = str.toCharArray();
-        chars[idx] = (chars[idx] == '9') ? '0' : (char)(1+chars[idx]);
-        return new String(chars);
+        chars[idx] = (chars[idx] == '9') ? '0' : (char)(chars[idx]+1);
+        return String.valueOf(chars);
     }
-    private String minusOne(String str, int idx) {
+    private String minusOne(String str, int idx) { // returns the String minus by one at idx
         char[] chars = str.toCharArray();
         chars[idx] = (chars[idx] == '0') ? '9' : (char)(chars[idx]-1);
-        return new String(chars);
+        return String.valueOf(chars);
     }
 }

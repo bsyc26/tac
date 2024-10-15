@@ -1,26 +1,33 @@
+/** Return the min depth of leaf in a binary tree */
+
+// leetcode 111
+// bfs
+// T: O(N)
+// S: O(N)
+
 import java.util.Queue;
 import java.util.LinkedList;
-/** Return the min depth of leaf */
-public class Solution { // leetcode 111
-    // bfs
-    public int minDepth(TreeNode root) { // T: O(N), S: O(N).
-        // base case
+
+public class Solution {
+    // core method
+    public int minDepth(TreeNode root) {
+        // edge case
         if (root == null) return 0;
-        // data struct
+        // DS
         Queue<TreeNode> q = new LinkedList<>();
         q.offer(root);
-        // var
-        int depth = 1; // root has depth 1
+        // res
+        int depth = 1; // root still has depth 1
         // bfs
         while (!q.isEmpty()) {
-            // cnt level
+            // count level size
             int sz = q.size();
-            // loop level
+            // traverse level elems
             for (int i = 0; i < sz; i++) {
                 // poll
                 TreeNode curNode = q.poll();
-                // manage states
-                if (curNode.left == null && curNode.right == null) // is leaf node
+                // update res
+                if (curNode.left == null && curNode.right == null) // curNode is a leaf node
                     return depth;
                 // offer
                 if (curNode.left != null)
@@ -29,9 +36,9 @@ public class Solution { // leetcode 111
                     q.offer(curNode.right);
             }
             // step level
-            ++depth;
+            depth++;
         }
-        // return
+        // return res
         return depth;
     }
 }
