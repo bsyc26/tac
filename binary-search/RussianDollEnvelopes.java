@@ -1,12 +1,16 @@
-import java.util.Arrays;
 /** Return the max num of envelopes can do Russsian Doll
   * envelops[i] = [w, h] is the width and height of an envelope
   * Russian Doll can be done only if the outer one has both greater width and height */
+
 // leetcode 354
-// binary-search: patience-sorting
-// T: O(NLogN), S: O(N).
+// binary-search:patience-sorting
+// T: O(NLogN)
+// S: O(N)
+
+import java.util.Arrays;
+
 public class Solution {
-    // main method
+    // core method
     public int maxEnvelopes(int[][] envelopes) {
         // const
         int N = envelopes.length;
@@ -18,22 +22,23 @@ public class Solution {
             return (a[0] == b[0]) ? b[1] - a[1] : a[0] - b[0];
         });
         // res
-        int[] heights = new int[N];
+        int[] hts = new int[N];
         for (int i = 0; i < N; i++)
-            heights[i] = mat[i][1];
+            hts[i] = mat[i][1];
         // return res
-        return patienceSort(heights);
+        return patienceSort(hts);
     }
+
     // support method
-    private int patienceSort(int[] nums) { // return len of longest increasing subsequence (LIS)
+    private int patienceSort(int[] arr) {
         // const
-        int N = nums.length;
+        int N = arr.length;
         // data struct
         int[] tops = new int[N];
         int piles = 0;
         // one pointer
         for (int i = 0; i < N; i++) {
-            int poker = nums[i];
+            int poker = arr[i];
             int left = 0;
             int right = piles-1;
             // binary search: left-bound

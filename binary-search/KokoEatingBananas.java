@@ -1,43 +1,51 @@
 /** Return the min int k to eat all bananas within h hours
   * piles[i] is the num of bananas of pile, k is eating number per hour */
+
 // leetcode: 875
-// binary-search: left-bound + map-func
-// T: O(logN), S: O(1).
+// binary-search:lo-bound + map-func
+// T: O(logN)
+// S: O(1).
+
 public class Solution {
     // state
     private int[] piles;
-    // main method
+
+    // core method
     public int minEatingSpeed(int[] piles, int h) {
-        // const
-        int TARGET = h;
+        // field
         this.piles = piles;
+        // const
+        int target = h;
         // var
-        int left = 1;
-        int right = 1_000_000_000; // h: [1..1_000_000_000]
-        // binary search
-        while (left <= right) {
-            // calc mid
-            int mid = left + (right-left)/2;
+        int lo = 1;
+        int hi = 1_000_000_000; // h: [1..1_000_000_000]
+        // binary-search:low-bound
+        while (lo <= hi) {
+            // calc mid && get f(mid)
+            int mid = lo + (hi-lo)/2;
             long cur = f(mid);
             // step next
-            if (cur < TARGET)
-                right = mid-1;
-            else if (cur > TARGET)
-                left = mid+1;
+            if (cur < target)
+                hi = mid-1;
+            else if (cur > target)
+                lo = mid+1;
             else
-                right = mid-1;
+                hi = mid-1;
         }
-        // return left-bound
-        return left;
+        // return low-bound
+        return lo;
     }
+
     // support method
-    private long f(int x) { // f(x) ~ -x
+    private long f(int x) { // x => f(x): eat-num => hours
+        // res
         long hours = 0;
         for (int i = 0; i < piles.length; i++) {
-            hours += piles[i]/x;
-            if (piles[i]%x > 0)
-                ++hours;
+            hours += piles[i] / x;
+            if (piles[i] % x > 0) // an extra hour if reminder
+                hours++;
         }
+        // return res
         return hours;
     }
 }

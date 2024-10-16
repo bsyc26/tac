@@ -7,6 +7,7 @@
 // S: O(N)
 
 public class Solution {
+    // core method
     public int trap(int[] height) {
         // const
         int N = height.length;
@@ -37,6 +38,7 @@ public class Solution {
 // S: O(1)
 
 public class Solution {
+    // core method
     public int trap(int[] height) {
         // const
         int N = height.length;

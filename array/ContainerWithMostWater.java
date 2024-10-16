@@ -7,6 +7,7 @@
 // S: O(1)
 
 public class Solution {
+    // core method
     public int maxArea(int[] height) {
         // const
         int N = height.length;

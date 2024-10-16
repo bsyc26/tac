@@ -1,44 +1,59 @@
+/** Return true if s can be seg into comb of wordDict elems (can be re-used) */
+
+// leetcode 139
+// dp-memo
+// T: O(N^3)
+// S: O(N)
+
 import java.util.HashSet;
 import java.util.Arrays;
-/** Return true if s can be seg into comb of wordDict elems (can be re-used) */
-public class Solution { // leetcode 139
-    // field
-    private HashSet<String> setWord;
+
+public class Solution {
+    // states
+    private final int DF_VAL = -1;
+    private final int FAIL = 0;
+    private final int SUCC = 1;
+    // DS
+    private HashSet<String> words;
     private int[] memo;
-    private String STR_S;
-    private int LEN_S;
-    // dp-memo + hash-set
-    public boolean wordBreak(String s, List<String> wordDict) { // T: O(N3), S: O(N).
+
+    // core method
+    public boolean wordBreak(String s, List<String> wordDict) {
         // const 
-        STR_S = s;
-        LEN_S = s.length();
-        // data struct
-        setWord = new HashSet<>(wordDict);
-        memo = new int[LEN_S]; // memo[i] is 1 means s[i..] can be composed from wordDict, 0 means not
-        Arrays.fill(memo, -1);
-        // return
-        return dp(0);
+        String str = s;
+        int N = str.length();
+        int DF_VAL = -1; // default value
+        // fields
+        this.words = new HashSet<>(wordDict);
+        this.memo = new int[N];
+        Arrays.fill(memo, DF_VAL); 
+        // return dp from index 0
+        return dp(str, 0);
     }
-    private boolean dp(int start) { // is s[idx..] able to be composed from wordDict
+
+    // support method
+    private boolean dp(String str, int start) {
+        // const
+        int N = str.length();
         // base case
-        if (start == LEN_S)
+        if (start == N)
             return true;
         // jump memo
-        if (memo[start] != -1)
-            return (memo[start] == 0) ? false : true;
+        if (this.memo[start] != DF_VAL)
+            return (this.memo[start] == FAIL) ? false : true;
         // state transfer
-        for (int len = 1; start+len <= LEN_S; len++) {
-            String sub = STR_S.substring(start, start+len);
-            if (setWord.contains(sub)) { // [start, start+len) matches wordDict
-                if (dp(start+len) == true) { // plus [start+len..] also matches wordDict (is true)
-                    memo[start] = 1; // [start..] can be composed by wordDict
+        for (int len = 1; start+len <= N; len++) {
+            String sub = str.substring(start, start+len); // sub: str[start, start+len)
+            if (this.words.contains(sub)) {
+                if (dp(str, start+len) == true) {
+                    this.memo[start] = SUCC; // update memo with SUCC
                     return true;
                 }
             }
         }
-        // update memo fallback
-        memo[start] = 0;
-        // return fallback
+        // update memo with FAIL
+        this.memo[start] = 0;
+        // return fallback false
         return false;
     }
 }
