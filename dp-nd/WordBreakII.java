@@ -1,46 +1,56 @@
+/** Return all possible sentences by adding spaces to s to make words in wordDict (can be re-used) */
+
+// leetcode 140
+// dp-memo
+// T: O(N^3)
+// S: O(N^2)
+
 import java.util.List;
 import java.util.LinkedList;
 import java.util.HashSet;
 import java.util.Arrays;
-/** Return all possible sentences by adding spaces to s to make words in wordDict (can be re-used) */
-public class Solution { // leetcode 140
-    // field
-    private HashSet<String> setWord;
+
+public class Solution {
+    // states
+    private HashSet<String> words;
+    // DS
     private List<String>[] memo;
-    private String STR_S;
-    private int LEN_S;
-    // dp-memo
-    public List<String> wordBreak(String s, List<String> wordDict) { // T: O(N3), S: O(N2).
-        // const
-        STR_S = s;
-        LEN_S = s.length();
-        // data strcut
-        setWord = new HashSet<>(wordDict);
-        memo = new List[LEN_S];
-        // return
-        return dp(0);
+
+    // core method
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        // consts
+        String str = s;
+        int N = str.length();
+        // fields
+        this.words = new HashSet<String>(wordDict);
+        this.memo = new LinkedList[N];
+        // return dp starts from index 0
+        return dp(str, 0);
     }
-    private List<String> dp(int start) {
-        // var
+
+    // support method
+    private List<String> dp(String str, int start) {
+        // const
+        int N = str.length();
+        // res
         List<String> sents = new LinkedList<>();
         // base case
-        if (start == LEN_S) {
+        if (start == N) {
             sents.add("");
             return sents;
         }
         // jump memo
-        if (memo[start] != null)
-            return memo[start];
+        if (memo[start] != null) return memo[start];
         // state transfer
-        for (int len = 1; start+len <= LEN_S; len++) {
-            String sub = STR_S.substring(start, start+len); // [start, start+len)
-            if (setWord.contains(sub)) { // 
-                List<String> subSents = dp(start+len); // get sents of [start+len..]
+        for (int len = 1; start+len <= N; len++) { // [start, start+len)
+            String sub = str.substring(start, start+len);
+            if (words.contains(sub)) { // cur sub str matches
+                List<String> subSents = dp(str, start+len); // get all sub sents
                 for (String subSent : subSents) {
                     if (subSent.isEmpty())
-                        sents.add(sub); // prevent extra space
+                        sents.add(sub);
                     else
-                        sents.add(sub + " " + subSent); // add sub word to sent
+                        sents.add(sub + " " + subSent);
                 }
             }
         }

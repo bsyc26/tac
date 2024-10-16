@@ -1,32 +1,38 @@
 /** Return the min sum of falling path through n x n matrix
   * falling path: (row, col) will be (row+1, col) or (row+1, col-1) or (row+1, col+1) */
-public class Solution { // leetcode 931
-    // dp-table
-    public int minFallingPathSum(int[][] matrix) { // T: O(N2), S: O(N2).
+
+// leetcode 931
+// dp-table
+// T: O(N^2)
+// S: O(N^2)
+
+public class Solution {
+    // core method
+    public int minFallingPathSum(int[][] matrix) {
         // const
         int N = matrix.length;
-        // var
-        int minSum = Integer.MAX_VALUE;
-        // data struct
+        int MAX = Integer.MAX_VALUE;
+        // res
+        int minSum = MAX;
+        // DS
         int[][] dp = new int[N][N]; // dp[i][j] is the min sum ended at (i, j)
-        for (int j = 0; j < N; j++)
-            dp[0][j] = matrix[0][j];
+        // base case
+        for (int col = 0; col < N; col++)
+            dp[0][col] = matrix[0][col]; // dp[0][col] is at least elem of matrix[0][col]
         // state transfer
         for (int row = 1; row < N; row++) {
             for (int col = 0; col < N; col++) {
-                if (col == 0)
-                    dp[row][col] = matrix[row][col] + Math.min(dp[row-1][col], dp[row-1][col+1]);
-                else if (col == N-1)
-                    dp[row][col] = matrix[row][col] + Math.min(dp[row-1][col], dp[row-1][col-1]);
-                else // col: [1..N-2]
-                    dp[row][col] = matrix[row][col]
-                        + Math.min(Math.min(dp[row-1][col-1], dp[row-1][col+1]), dp[row-1][col]);
+                int cur = matrix[row][col];
+                int up = dp[row-1][col];
+                int lfup = (col >= 1) ? dp[row-1][col-1] : MAX;
+                int rtup = (col < N-1) ? dp[row-1][col+1] : MAX;
+                dp[row][col] = cur + Math.min(up, Math.min(lfup, rtup));
             }
         }
-        // get min sum
-        for (int j = 0; j < N; j++)
-            minSum = Math.min(minSum, dp[N-1][j]);
-        // return
+        // get res
+        for (int col = 0; col < N; col++) // traverse last row
+            minSum = Math.min(minSum, dp[N-1][col]);
+        // return res
         return minSum;
     }
 }

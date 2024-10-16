@@ -1,46 +1,54 @@
-import java.util.Arrays;
 /** Return the num of distinct sub seq (can be non-consecutive) of s equals to t */
-public class Solution { // leetcode 115
-    // field
+
+// leetcode 115
+// dp-memo
+// T: O(MN)
+// S: O(MN)
+
+import java.util.Arrays;
+
+public class Solution {
+    // states
+    private final int DF_VAL = -1; // default value
+    // DS
     private int[][] memo;
-    String STR_S;
-    String STR_T;
-    int LEN_S;
-    int LEN_T;
-    // dp-memo
-    public int numDistinct(String s, String t) { // T: O(MN), S: O(MN).
+
+    // core method
+    public int numDistinct(String s, String t) {
         // edge case
         if (s.length() < t.length()) return 0;
         // const
-        LEN_S = s.length();
-        LEN_T = t.length();
-        STR_S = s;
-        STR_T = t;
-        // data struct
-        memo = new int[LEN_S][LEN_T]; // memo[i][j] is num of occurrence of t[j..] in s[i..]
-        for (int[] row : memo)
-            Arrays.fill(row, -1);
-        // return
-        return dp(0, 0);
+        int LEN_S = s.length();
+        int LEN_T = t.length();
+        // field
+        this.memo = new int[LEN_S][LEN_T]; // i, j is start idx of String s and t
+        for (int[] row : this.memo)
+            Arrays.fill(row, DF_VAL);
+        // return res
+        return dp(s, t, 0, 0); // String s and t start from 0
     }
-    private int dp(int idxS, int idxT) { // calc the num of seq of s[idxS..] equals to t[idxT..]
+
+    // support method
+    private int dp(String s, String t, int startS, int startT) {
+        // const 
+        int LEN_S = s.length();
+        int LEN_T = t.length();
         // base case
-        if (idxT == LEN_T)
+        if (startT == LEN_T)
             return 1;
-        if (LEN_S - idxS < LEN_T - idxT)
+        if (LEN_S - startS < LEN_T - startT) // no more sub possible to match
             return 0;
         // jump memo
-        if (memo[idxS][idxT] != -1)
-            return memo[idxS][idxT];
-        // var
+        if (memo[startS][startT] != DF_VAL) return memo[startS][startT];
+        // res
         int cnt = 0;
         // state transfer
-        if (STR_S.charAt(idxS) == STR_T.charAt(idxT))
-            cnt = dp(1+idxS, 1+idxT) + dp(1+idxS, idxT); // 1st char match then plus 2nd char match
+        if (s.charAt(startS) == t.charAt(startT)) // if start char matches
+            cnt = dp(s, t, startS+1, startT+1) + dp(s, t, startS+1, startT);
         else
-            cnt = dp(1+idxS, idxT); // 1st char not match then step char in s
+            cnt = dp(s, t, startS+1, startT);
         // update memo
-        memo[idxS][idxT] = cnt;
+        memo[startS][startT] = cnt;
         // return
         return cnt;
     }

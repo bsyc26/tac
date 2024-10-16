@@ -1,26 +1,33 @@
 /** Return the num of combs of coins[] (can be re-used) make up the amount, else 0 */
-public class Solution { // leetcode 518
-    // dp-table: knapsack
-    public int change(int amount, int[] coins) { // T: O(MN), S: O(MN).
+
+// leetcode 518
+// dp-table:knapsack
+// T: O(MN)
+// S: O(MN)
+
+public class Solution {
+    // core method
+    public int change(int amount, int[] coins) {
         // const
         int N = coins.length;
-        int SUM = amount;
-        // data struct
-        int[][] dp = new int[1+N][1+SUM]; // int: combs of coins[0..i] to make j
+        int AMT = amount;
+        // DS
+        int[][] dp = new int[N+1][AMT+1];
         // base case
+        // dp[0][j] = 0; // zero item any bag is not a comb
         for (int i = 0; i <= N; i++)
-            dp[i][0] = 1; // dp[0][j] = 0
+            dp[i][0] = 1; // one item zero bag is a comb
         // state transfer
-        for (int i = 1; i <= N; i++) {
-            for (int j = 1; j <= SUM; j++) {
-                int coin = coins[i-1];
-                if (j - coin >= 0)
-                    dp[i][j] = dp[i-1][j] + dp[i][j-coin]; // coin can be re-used
+        for (int item = 1; item <= N; item++) { // traverse items
+            for (int amt = 1; amt <= AMT; amt++) { // traverse bags
+                int cur = coins[item-1]; // 0-index
+                if (amt - cur >= 0) // bag can contain item
+                    dp[item][amt] = dp[item-1][amt] + dp[item][amt-cur]; // can re-use
                 else
-                    dp[i][j] = dp[i-1][j];
+                    dp[item][amt] = dp[item-1][amt];
             }
         }
-        // return
-        return dp[N][SUM];
+        // return res
+        return dp[N][AMT];
     }
 }
