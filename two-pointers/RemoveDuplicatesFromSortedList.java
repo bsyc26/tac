@@ -1,8 +1,12 @@
 /** Delete all duplicates of a sorted linked list and return the head (list still sorted) */
+
 // leetcode 83
-// two-pointers: fast-slow
-// T: O(N), S: O(1).
+// two-pointers:fast-slow
+// T: O(N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public ListNode deleteDuplicates(ListNode head) {
         // edge case
         if (head == null) return null;

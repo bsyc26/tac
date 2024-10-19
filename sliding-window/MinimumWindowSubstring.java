@@ -1,19 +1,24 @@
-import java.util.HashMap;
 /** Return the min substring of s to have all chars (duplicates including) of t, else "" */
+
 // leetcode 76
 // sliding-window + hash
-// T: O(M+N), S: O(M+N).
+// T: O(M+N)
+// S: O(M+N)
+
+import java.util.HashMap;
+
 public class Solution {
+    // core method
     public String minWindow(String s, String t) {
         // edge case
         if (s.length() < t.length()) return "";
         // const
         int N = s.length();
-        // data struct
-        HashMap<Character, Integer> tCharCnt = new HashMap<>(); // char: count of String t
+        // DS
+        HashMap<Character, Integer> tCharToCnt = new HashMap<>(); // char: count of String t
         for (char c : t.toCharArray())
-            tCharCnt.put(c, tCharCnt.getOrDefault(c,0)+1);
-        HashMap<Character, Integer> winCharCnt = new HashMap<>(); // char: count of window
+            tCharToCnt.put(c, tCharToCnt.getOrDefault(c,0)+1);
+        HashMap<Character, Integer> winCharToCnt = new HashMap<>(); // char: count of window
         // var
         int left = 0;
         int right = 0;
@@ -24,30 +29,30 @@ public class Solution {
         // sliding window
         while (right < N) {
             // step right
-            char chRt = s.charAt(right);
+            char charRight = s.charAt(right);
             ++right;
             // update states
-            if (tCharCnt.containsKey(chRt)) {
-                winCharCnt.put(chRt, winCharCnt.getOrDefault(chRt,0)+1); // update window
-                if (winCharCnt.get(chRt).equals(tCharCnt.get(chRt)))
+            if (tCharToCnt.containsKey(charRight)) {
+                winCharToCnt.put(charRight, winCharToCnt.getOrDefault(charRight,0)+1); // update window
+                if (winCharToCnt.get(charRight).equals(tCharToCnt.get(charRight)))
                     ++numMatch; // update state
             }
             // step left
-            while (numMatch == tCharCnt.size()) {
+            while (numMatch == tCharToCnt.size()) {
                 if (right-left < minLen) {
                     start = left;
                     minLen = right - left; // update res
                 }
-                char chLf = s.charAt(left);
+                char charLeft = s.charAt(left);
                 ++left;
-                if (tCharCnt.containsKey(chLf)) {
-                    if (winCharCnt.get(chLf).equals(tCharCnt.get(chLf)))
+                if (tCharToCnt.containsKey(charLeft)) {
+                    if (winCharToCnt.get(charLeft).equals(tCharToCnt.get(charLeft)))
                         --numMatch;
-                    winCharCnt.put(chLf, winCharCnt.get(chLf)-1); // update window
+                    winCharToCnt.put(charLeft, winCharToCnt.get(charLeft)-1); // update window
                 }
             }
         }
-        // return
+        // return res or fallback
         return (minLen == Integer.MAX_VALUE) ? "" : s.substring(start, start+minLen);
     }
 }

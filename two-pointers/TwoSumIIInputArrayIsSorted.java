@@ -1,14 +1,19 @@
 /** Return the indices of [idx1, idx2] of elems in sorted numbers[] sum up to target */
+
 // leetcode 167
-// two-pointers: left-right
+// two-pointers:left-right
+// T: O(N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public int[] twoSum(int[] numbers, int target) {
         // const
         int N = numbers.length;
         // var
         int left = 0;
         int right = N-1;
-        // two pointers: left-right
+        // two-pointers:left-right
         while (left < right) {
             // calc cur
             int curSum = numbers[left] + numbers[right];

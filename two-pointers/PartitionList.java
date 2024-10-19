@@ -1,9 +1,13 @@
 /** Partition the linked list: all nodes less than x come before nodes greater than or equal to x
   * preserve the original relative order in two partitions */
+
 // leetcode 86
-// two-pointers: parallel
-// T: O(N), S: O(1).
+// two-pointers:parallel
+// T: O(N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public ListNode partition(ListNode head, int x) {
         // var
         ListNode dummyLt = new ListNode(Integer.MIN_VALUE); // partition of less than x 

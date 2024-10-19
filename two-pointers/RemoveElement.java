@@ -1,9 +1,13 @@
 /** Remove all occur of val in-place and return the num of elems not equal to val
   * the elems not equal to val must be the first k (num of non-equal-val elems) elems of nums[]*/
+
 // leetcode 27
-// two-pointers: fast-slow
-// T: O(N), S: O(1).
+// two-pointers:fast-slow
+// T: O(N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public int removeElement(int[] nums, int val) {
         // const
         int N = nums.length;

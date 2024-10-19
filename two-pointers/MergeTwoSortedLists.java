@@ -1,8 +1,12 @@
 /** Merge two sorted ascending lists into one sorted list and return the head of merged linked list */
+
 // leetcode 21
-// two-pointers: parallel
-// T: O(M+N), S: O(1).
+// two-pointers:parallel
+// T: O(M+N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public ListNode mergeTwoLists(ListNode List1, ListNode List2) {
         // var
         ListNode pt1 = List1;

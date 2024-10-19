@@ -1,8 +1,12 @@
 /** Reverse the linked-list and return the reversed head */
+
 // leetcode 206
-// iteration
-// T: O(N), S: O(N).
+// linked-list:iter
+// T: O(N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public ListNode reverseList(ListNode head) {
         // edge case
         if (head == null || head.next == null) return head;
@@ -22,8 +26,9 @@ public class Solution {
     }
 }
 
-// recursion
-// T: O(N), S: O(1).
+// linked-list:recur
+// T: O(N)
+// S: O(1)
 public class Solution {
     public ListNode reverseList(ListNode head) {
         // base case

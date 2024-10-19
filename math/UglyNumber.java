@@ -1,9 +1,13 @@
 /** Return true if n is ugly num
   * ugly num: pos int whose prime factors are limited to 2, 3, 5 */
+
 // leetcode 263
-// math: factor
-// T: O(N), S: O(1).
+// math:factor
+// T: O(N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public boolean isUgly(int n) {
         // const
         int N = n;

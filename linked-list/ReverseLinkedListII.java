@@ -1,15 +1,18 @@
 /** Reverse the nodes from pos left to right (1-index) and return the head */
+
 // leetcode 92
-// iteration
-// T: O(N), S: O(1).
+// linked-list:iter
+// T: O(N)
+// S: O(1)
+
 public class Solution {
-    // main method
+    // core method
     public ListNode reverseBetween(ListNode head, int left, int right) {
         // const
         int N = right-left+1; // len of [left, right]
         // edge case
         if (left == 1) return reverseN(head, N);
-        // var
+        // vars
         ListNode preRev = head;
         for (int i = 0; i < left-2; i++)
             preRev = preRev.next;
@@ -19,16 +22,17 @@ public class Solution {
         // return orig head
         return head;
     }
+
     // support method
     private ListNode reverseN(ListNode head, int N) {
         // edge case
         if (head == null || head.next == null) return head;
-        // var
+        // vars
         ListNode pred = null;
         ListNode cur = head;
         ListNode succ = head.next;
         int steps = N;
-        // iter
+        // iter with steps
         while (steps > 0) {
             cur.next = pred;
             pred = cur;
@@ -43,12 +47,14 @@ public class Solution {
     }
 }
 
-// recursion
-// T: O(N), S: O(1).
+// linked-list:recur
+// T: O(N)
+// S: O(1)
 public class Solution {
     // state
     private ListNode postRev;
-    // main method
+
+    // core method
     public ListNode reverseBetween(ListNode head, int left, int right) {
         // const
         int N = right-left+1; // [left, right]
@@ -64,6 +70,7 @@ public class Solution {
         // return orig head
         return head;
     }
+
     // support method
     private ListNode reverseN(ListNode head, int N) {
         // base case

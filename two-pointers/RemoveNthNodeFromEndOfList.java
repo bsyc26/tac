@@ -1,8 +1,12 @@
 /** Remove the n-th node from the end of list and return the original linked-list's head */
+
 // leetcode 19
-// two-pointers: fast-slow
-// T: O(N), S: O(1).
+// two-pointers:fast-slow
+// T: O(N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public ListNode removeNthFromEnd(ListNode head, int n) {
         // var
         ListNode dummy = new ListNode(Integer.MIN_VALUE); // might remove head

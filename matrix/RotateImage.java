@@ -1,9 +1,12 @@
 /** Rotate the n x n matrix by 90 degrees clockwise */
+
 // leetcode 48
-// matrix
-// T: O(N2), S: O(N1).
+// matrix:iter
+// T: O(N^2)
+// S: O(1)
+
 public class Solution {
-    // main method
+    // core method
     public void rotate(int[][] matrix) { // rotate == diag mirror + reverse row
         transpose(matrix);
         for (int[] row : matrix)
@@ -24,18 +27,18 @@ public class Solution {
             }
         }
     }
-    private void reverse(int[] nums) { // reverse the order of nums[]
+    private void reverse(int[] arr) { // reverse the order of arr[]
         // const
-        int N = nums.length;
+        int N = arr.length;
         // var
         int left = 0;
         int right = N-1;
-        // two pointers: left-right
+        // two-pointers:left-right
         while (left < right) {
             // swap
-            int tmp = nums[left];
-            nums[left] = nums[right];
-            nums[right] = tmp;
+            int tmp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = tmp;
             // step next
             ++left;
             --right;

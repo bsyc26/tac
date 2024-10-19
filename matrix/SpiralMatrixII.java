@@ -1,8 +1,11 @@
 /** Give n, generate n x n matrix with elems from 1 to n^2 in spiral order */
 // leetcode 59
-// matrix
-// T: O(N2), S: O(1).
+// matrix:iter
+// T: O(N2)
+// S: O(1).
+
 public class Solution {
+    // core method
     public int[][] generateMatrix(int n) {
         // const
         int N = n;

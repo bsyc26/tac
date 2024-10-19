@@ -1,14 +1,19 @@
+/** Return an arr of all uniq four tuple sum up to target */
+
+// leetcode 18
+// two-pointers:left-right
+// T: O(N^3)
+// S: O(N)
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
-/** Return an arr of all uniq four tuple sum up to target */
-// leetcode 18
-// two-pointers: left-right
-// T: O(N3), S: O(N).
+
 public class Solution {
     // state
     private int[] nums;
-    // main method
+
+    // core method
     public List<List<Integer>> fourSum(int[] nums, int target) {
         // const
         int N = nums.length;
@@ -20,6 +25,7 @@ public class Solution {
         // return res
         return nSumTarget(4, 0, target); // k == 4, start == 0
     }
+
     // support methods
     private List<List<Integer>> nSumTarget(int k, int start, long target) {
         // const
@@ -56,7 +62,7 @@ public class Solution {
         int right = N-1;
         // res
         List<List<Integer>> res = new LinkedList<>();
-        // two-pointers: left-right
+        // two-pointers:left-right
         while (left < right) { // no re-use of elem
             // calc cur
             int valLf = nums[left];

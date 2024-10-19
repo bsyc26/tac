@@ -1,13 +1,17 @@
 /** Return the node begins the cycle or null if no cycle */
+
 // leetcode 142
-// two-pointers: fast-slow
-// T: O(N), S: O(1).
+// two-pointers:fast-slow
+// T: O(N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public ListNode detectCycle(ListNode head) {
         // var
         ListNode fast = head;
         ListNode slow = head;
-        // two pointers: fast-slow
+        // two-pointers:fast-slow
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;

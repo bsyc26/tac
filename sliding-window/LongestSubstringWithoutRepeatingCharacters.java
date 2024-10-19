@@ -1,28 +1,33 @@
-import java.util.HashMap;
 /** Return the max len of substring without repeating chars of s */
+
 // leetcode 3
-// sliding-window + hash
-// T: O(N), S: O(N).
+// sliding-window + hash-map
+// T: O(N)
+// S: O(N)
+
+import java.util.HashMap;
+
 public class Solution {
+    // core method
     public int lengthOfLongestSubstring(String s) {
         // edge case
         if (s.length() == 0) return 0;
         // const
         int N = s.length();
-        // data struct
-        HashMap<Character, Integer> winCharCnt = new HashMap<>(); // char: count
+        // DS
+        HashMap<Character, Integer> charToCnt = new HashMap<>(); // char: count
         // var
         int left = 0;
         int right = 0;
         // res
         int maxLen = 0;
-        // sliding window
+        // sliding-window
         while (right < N) {
             // step right
-            char chRt = s.charAt(right);
+            char charRight = s.charAt(right);
             ++right;
-            // update state
-            winCharCnt.put(chRt, winCharCnt.getOrDefault(chRt,0)+1);
+            // update charToCnt hash-map
+            charToCnt.put(charRight, winCharCnt.getOrDefault(charRight,0)+1);
             // step left
             while (winCharCnt.get(chRt) > 1) {
                 char chLf = s.charAt(left);

@@ -1,8 +1,11 @@
 /** Return true if capacity not exceed during trips
   * trips[i] = [numPassengers, from, to] */
+
 // leetcode 1094
-// prefix: pre-diff
-// T: O(N), S: O(N).
+// prefix:pre-diff
+// T: O(N)
+// S: O(N)
+
 public class Solution {
     // nested class
     public class PreDiff {
@@ -11,17 +14,18 @@ public class Solution {
         // constructor
         public PreDiff(int[] nums) {
             int N = nums.length; // const
-            diff = new int[N]; // data struct
-            diff[0] = nums[0];
+            this.diff = new int[N]; // data struct
+            this.diff[0] = nums[0];
             for (int i = 1; i < N; i++)
-                diff[i] = diff[i-1] - nums[i];
+                this.diff[i] = this.diff[i-1] - nums[i];
         }
-        // methods
+        // update method
         public void update(int start, int end, int val) {
             diff[start] += val;
             if (end+1 < diff.length) // [start, end]
                 diff[end+1] -= val;
         }
+        // access method
         public int[] result() {
             int N = diff.length;
             int[] res = new int[N];
@@ -31,13 +35,14 @@ public class Solution {
             return res;
         }
     }
-    // main method
+
+    // core method
     public boolean carPooling(int[][] trips, int capacity) {
         // const
         int N = 1001; // from, to range within [0, 1000]
         //var
         int[] nums = new int[N];
-        // data struct
+        // DS
         PreDiff pd = new PreDiff(nums);
         for (int[] trip : trips) {
             int val = trip[0];

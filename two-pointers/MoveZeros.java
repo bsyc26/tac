@@ -1,8 +1,12 @@
 /** Move in-place all 0's to the end of arr while keep the relative order of non-zero elems */
+
 // leetcode 283
-// two-pointers: fast-slow
-// T: O(N), S: O(1).
+// two-pointers:fast-slow
+// T: O(N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public void moveZeroes(int[] nums) {
         // const
         int N = nums.length;

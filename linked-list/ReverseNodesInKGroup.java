@@ -1,15 +1,18 @@
 /** Reverse every k nodes of the list per group and return the rev head */
+
 // leetcode 25
-// recursion
-// T: O(N), S: O(1).
+// linked-list:recur
+// T: O(N)
+// S: O(1)
+
 public class Solution {
-    // main method
+    // core method
     public ListNode reverseKGroup(ListNode head, int k) {
         // const
         int K = k; // num of nodes of a rev group
         // edge case
         if (head == null) return null;
-        // var
+        // vars
         ListNode start = head;
         ListNode end = head; // [start, end)
         for (int i = 0; i < K; i++) {
@@ -23,6 +26,7 @@ public class Solution {
         // return revHead
         return revHead;
     }
+
     // support method
     private ListNode reverseN(ListNode head, int K) {
         // base case
@@ -33,7 +37,7 @@ public class Solution {
         ListNode cur = head;
         ListNode succ = head.next;
         int steps = K;
-        // iter
+        // iter with steps
         while (steps > 0) {
             cur.next = pred;
             pred = cur;

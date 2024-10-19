@@ -1,10 +1,14 @@
-import java.util.List;
-import java.util.LinkedList;
 /** Return all elem of matrix in a sprial order */
+
 // leetcode 54
 // matrix
-// T: O(MN), S: O(1).
+// T: O(MN)
+// S: O(1)
+
+import java.util.List;
+import java.util.LinkedList;
 public class Solution {
+    // core method
     public List<Integer> spiralOrder(int[][] matrix) {
         // const
         int M = matrix.length;

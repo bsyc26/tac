@@ -1,15 +1,19 @@
+/** Return all triplets of elems sum up to 0 with no dup */
+
+// leetcode 15
+// two-pointers:left-right + sort
+// T: O(N2)
+// S: O(N)
+
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Arrays;
-/** Return all triplets of elems sum up to 0 with no dup */
-// leetcode 15
-// two-pointers: left-right + sort
-// T: O(N2), S: O(N).
+
 public class Solution {
     // state
     private int[] nums;
 
-    // main method
+    // core method
     public List<List<Integer>> threeSum(int[] nums) {
         // const
         int N = nums.length;

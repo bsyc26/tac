@@ -1,8 +1,11 @@
 /** Return arr after applying all the updates
   * updates[i] = [start, end, incre] */
+
 // leetcode 370
-// prefix: pre-diff
-// T: O(N), S: O(N).
+// prefix:pre-diff
+// T: O(N)
+// S: O(N)
+
 public class Solution {
     // nested class 
     private class PreDiff {
@@ -16,12 +19,13 @@ public class Solution {
             for (int i = 1; i < N; i++)
                 diff[i] = nums[i] - nums[i-1];
         }
-        // methods
+        // update method
         public void update(int start, int end, int val) {
             preDiff[start] += val;
             if (end+1 < preDiff.length) // [start, end]
                 preDiff[end+1] -= val;
         }
+        // access method
         public int[] result() {
             int N = preDiff.length; // const
             int[] res = new int[N]; // res
@@ -31,13 +35,14 @@ public class Solution {
             return res; // return res
         }
     }
+
     // main method
     public int[] getModifiedArray(int length, int[][] updates) {
         // const
         int N = length;
         // var
         int[] nums = new int[N];
-        // data struct
+        // DS
         PreDiff pd = new PreDiff(nums);
         for (int[] update : updates) {
             int start = update[0];

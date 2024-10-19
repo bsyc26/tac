@@ -1,8 +1,11 @@
 /** Return answer[n] where answer[i] is the tot num of seats reserved for flight i
   * bookings[i] = [first, last, seats], seats will be reserved for [first, last] */
+
 // leetcode 1109
 // prefix: pre-diff
-// T: O(N), S: O(N).
+// T: O(N)
+// S: O(N)
+
 public class Solution {
     // nested class
     private class PreDiff {
@@ -31,13 +34,14 @@ public class Solution {
             return res;
         }
     }
-    // main method
+
+    // core method
     public int[] corpFlightBookings(int[][] bookings, int n) {
         // const
         int N = n;
         // var
         int[] nums = new int[n];
-        // data struct
+        // DS
         PreDiff pd = new PreDiff(nums);
         for (int[] booking : bookings) { // 1-index
             int start = booking[0]-1;

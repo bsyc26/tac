@@ -1,9 +1,12 @@
 /** Return true if is a palindrome linked list, otherwise false */
+
 // leetcode 234
-// two-potiners: fast-slow + parallel
-// T: O(N), S: O(1).
+// two-potiners:fast-slow+parallel
+// T: O(N)
+// S: O(1)
+
 public class Solution {
-    // main method
+    // core method
     public boolean isPalindrome(ListNode head) {
         // var
         ListNode fast = head;

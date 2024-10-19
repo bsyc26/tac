@@ -1,9 +1,13 @@
 /** Remove the duplicates in-place and return the num of uniq elems in non-decreasing nums[]
   * relative order should be preserved, all uniq elems should in the first k (num of uniq) idx loc */
+
 // leetcode 26
-// two-pointers: fast-slow
-// T: O(N), S: O(1).
+// two-pointers:fast-slow
+// T: O(N)
+// S: O(1)
+
 public class Solution {
+    // core method
     public int removeDuplicates(int[] nums) {
         // const
         int N = nums.length;

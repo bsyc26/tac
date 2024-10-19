@@ -1,12 +1,17 @@
+/** Return an array of all the start idx of p's anagrams in s in any order
+  * anagram: re-arranging words using all the original letters exactly once */
+
+// leetcode 438
+// sliding-window + hash
+// T: O(M+N)
+// S: O(M+N)
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
-/** Return an array of all the start idx of p's anagrams in s in any order
-  * anagram: re-arranging words using all the original letters exactly once */
-// leetcode 438
-// sliding-window + hash
-// T: O(M+N), S: O(M+N).
+
 public class Solution {
+    // core method
     public List<Integer> findAnagrams(String s, String p) {
         // edge case
         if (p.length() > s.length()) return new LinkedList<>();

@@ -1,14 +1,18 @@
 /** Return the longest palindromic substring of s
   * palindromic: s[i] == s[N-1-i] */
+
 // leetcode 5
 // two-pointers: left-right
-// T: O(N2), S: O(1).
+// T: O(N2)
+// S: O(1)
+
 public class Solution {
     // states
     private String str;
     private int maxLen;
     private int startIdx; // res is str.substring(startIdx, maxLen)
-    // main method
+
+    // core method
     public String longestPalindrome(String s) {
         // field
         str = s;
@@ -26,6 +30,7 @@ public class Solution {
         // return
         return s.substring(startIdx, startIdx+maxLen); // [start, start+maxLen)
     }
+
     // support method
     private void getPalindrome(int left, int right) {
         // const
